@@ -9,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MealContext>(options =>
     options.UseSqlite("Data Source=MealVoter.db"));
+
+//Add MealService to the container
+//Can be injected into any razor page
 builder.Services.AddScoped<MealService>();
 
 var app = builder.Build();
