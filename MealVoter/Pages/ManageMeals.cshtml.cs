@@ -32,5 +32,12 @@ namespace MealVoter.Pages
 
             return RedirectToAction("Get");
         }
+
+        public IActionResult OnPostDelete(int id)
+        {
+            _service.DeleteMeal(id);
+
+            return RedirectToAction("Get");
+        }
     }
 }
