@@ -1,7 +1,15 @@
+using MealVoter.Data;
+using MealVoter.Services;
+
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<MealContext>(options =>
+    options.UseSqlite("Data Source=MealVoter.db"));
+builder.Services.AddScoped<MealService>();
 
 var app = builder.Build();
 
