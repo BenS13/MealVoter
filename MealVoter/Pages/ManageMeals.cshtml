@@ -9,3 +9,26 @@
 <!-- New meal form will go here -->
 
 <!-- List of avaliable meals will go here-->
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Meal Type</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var meal in Model.MealList)
+    {
+        <tr>
+            <td>@meal.Name</td>
+            <td>@meal.Type</td>
+            <td>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@meal.Id">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        
+    }        
+    </tbody>
+</table>
