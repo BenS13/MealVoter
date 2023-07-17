@@ -7,6 +7,29 @@
 <h1>Manage Avaliable Meals 🍽️</h1>
 
 <!-- New meal form will go here -->
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="NewMeal.Name" class="control-label"></label>
+        <input asp-for="NewMeal.Name" class="form-control"/>
+        <span asp-validation-for="NewMeal.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewMeal.Type" class="control-label"></label>
+        <select asp-for="NewMeal.Type" class="form-control" id="MealType">
+            <option value="">-- Select Type --</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+        </select>
+        <span asp-validation-for="NewMeal.Type" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary"/>
+    </div>
+</form>
+
+
 
 <!-- List of avaliable meals will go here-->
 <table class="table mt-5">
@@ -32,3 +55,7 @@
     }        
     </tbody>
 </table>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
