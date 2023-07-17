@@ -9,6 +9,8 @@ namespace MealVoter.Pages
     {
         private readonly MealService _service;
         public IList<Meal> MealList { get; set;} = default!;
+        [BindProperty]
+        public Meal NewMeal { get; set;} = default!;
 
         public ManageMealsModel(MealService service)
         {
@@ -17,6 +19,18 @@ namespace MealVoter.Pages
         public void OnGet()
         {
             MealList = _service.GetMeals();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid || NewMeal == null)
+            {
+                return Page();
+            }
+
+            _service.AddMeal(NewMeal);
+
+            return RedirectToAction("Get");
         }
     }
 }
